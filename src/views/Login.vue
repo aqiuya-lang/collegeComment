@@ -1,35 +1,35 @@
 <template>
-       <div class="login-box">
-         <h1>高校舆情管理系统</h1>
-         <el-form
-        class="login-form"
-        :model="loginForm"
-        ref="ruleForm"
-      >
-        <!-- 学号 -->
-        <el-form-item  prop="userName">
-          <img src="../assets/img/login/stuid.png" alt="">
-          <el-input  v-model="loginForm.username" placeholder="请输入你的学号"></el-input>
-        </el-form-item>
+      <div class="login">
+         <div class="login-box">
+            <h1>高校舆情管理系统</h1>
+            <el-form
+            class="login-form"
+            :model="loginForm"
+            ref="ruleForm"
+          >
+            <!-- 帐号 -->
+            <el-form-item  prop="username">
+              <el-input  v-model="loginForm.username" placeholder="请输入你的帐号"></el-input>
+            </el-form-item>
 
-        <!-- 密码 -->
-        <el-form-item  prop="password">
-          <img src="../assets/img/login/password.png" alt="">
-          <el-input  type="password" v-model="loginForm.password" placeholder="请输入你的密码"></el-input>
-        </el-form-item>
+            <!-- 密码 -->
+            <el-form-item  prop="password">
+              <el-input  type="password" v-model="loginForm.password" placeholder="请输入你的密码"></el-input>
+            </el-form-item>
 
-        <!-- 点击登录 -->
-          <el-button
-           class="btn"
-            type="primary"
-            @click="sendLogin()"
-            size="small"
-          >登录</el-button>
+            <!-- 点击登录 -->
+              <el-button
+              class="btn"
+                type="primary"
+                @click="sendLogin()"
+                size="small"
+              >登录</el-button>
 
-          <!-- 跳转到登录页面 -->
-          <div class="go-reg" @click="goRegister">没有帐号，去注册</div>
-      </el-form>    
-       </div>
+              <!-- 跳转到登录页面 -->
+              <div class="go-reg" @click="goRegister">没有帐号，去注册</div>
+          </el-form>    
+          </div>
+      </div>
 </template>
 
 <script>
@@ -41,16 +41,16 @@ export default {
 
       //双向绑定用户输入信息
       loginForm:{
-        userName: '',
+        username: '',
         password: ''
       },
 
       //表单验证规则
       loginRules: {
 
-       //学号验证规则
-        userName:[
-          {required: true, message: '请输入你的用户名',trigger: 'blur'},
+       //帐号验证规则
+        username:[
+          {required: true, message: '请输入你的帐号',trigger: 'blur'},
           {min: 10, max: 10, trigger: 'blur'}
         ],
 
@@ -61,10 +61,6 @@ export default {
         ],
       },
 
-      //重置
-      // resetForm(formName) {
-      //   this.$refs[formName].resetFields();
-      // },
     }
   },
   methods: {
@@ -98,48 +94,56 @@ export default {
 }
 </script>
 
-<style>
-body{
-  background-color: #ebeef7;
+<style  lang="less">
+.login{
+  width: 100%;
+  height: 100%;
+  background-image: url("../assets/img/screen/loginbkg.jpg");
+  background-size: 100% 100%;
+  background-repeat: no-repeat;
+    .login-box{
+      width: 25%;
+      position: absolute;
+      top:50%;
+      left:50%;
+      transform: translate(-50%,-50%);
+      h1{
+        text-align: center;
+        color: #24E0D2;
+        margin-bottom: 20px;
+        z-index: 0;
+      }      
+      .el-input__inner{
+        border-radius:20px;
+        color: #24E0D2;
+        border: solid 1px #24E0D2;
+        height: 32px;
+        background-color: transparent;
+      }
+     input::-webkit-input-placeholder {
+      color: #24E0D2;
+      }
+      .el-button--primary {
+        border-radius:20px;
+        width: 100%;
+        font-size: 16px;
+        background-color:#24e0d327;
+        color: #24E0D2;
+        
+        }
+      .go-reg{ 
+      float: right;
+      margin-top: 50px;
+      font-size: 15px;
+      color: white;
+      }
+      .go-reg:hover{
+        cursor: pointer;
+        color: #24E0D2;;
+      }
+    }
+
 }
-.login-box{
-  width: 25%;
-  position: absolute;
-  top:50%;
-  left:50%;
-  transform: translate(-50%,-50%);
-}
-h1{
-    text-align: center;
-    color: #545d66;
-    margin-bottom: 20px;
-    z-index: 0;
-}
-input{
-  margin-top: 10px;
-}
-.btn{
-  margin-top: 20px;
-   margin-left: 50%;
-   transform: translate(-50%);
-}
-.go-reg{ 
- float: right;
- margin-top: 50px;
- font-size: 15px;
- color: #606368;
-}
-.go-reg:hover{
-  cursor: pointer;
-  color: #F56C6C;;
-}
-img{
-  width: 25px;
-  height: 25px;
-  position: absolute;
-   right: 10px;
-   top: 17px;
-  z-index: 999;
-}
+
 
 </style>
